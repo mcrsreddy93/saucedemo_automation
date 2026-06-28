@@ -3,6 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   reporter: 'html',
+  retries : 2,
+  fullyParallel:true,
   use: {
     headless:false,
     screenshot: 'only-on-failure',
@@ -13,6 +15,14 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'edge',
+      use: { ...devices['Desktop Edge'] },
     },
   ]
 });
